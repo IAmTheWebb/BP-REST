@@ -330,7 +330,6 @@ class BP_REST_Members_Endpoint extends WP_REST_Users_Controller {
 		$data = array(
 			'id'                 => $user->ID,
 			'name'               => $user->display_name,
-			'email'              => $user->user_email,
 			'user_login'         => $user->user_login,
 			'link'               => bp_core_get_user_domain( $user->ID, $user->user_nicename, $user->user_login ),
 			'registered_date'    => bp_rest_prepare_date_response( $user->user_registered ),
@@ -495,13 +494,6 @@ class BP_REST_Members_Endpoint extends WP_REST_Users_Controller {
 					'arg_options' => array(
 						'sanitize_callback' => 'sanitize_text_field',
 					),
-				),
-				'email'              => array(
-					'description' => __( 'The email address for the member.', 'buddypress' ),
-					'type'        => 'string',
-					'format'      => 'email',
-					'context'     => array( 'embed', 'view', 'edit' ),
-					'required'    => true,
 				),
 				'link'               => array(
 					'description' => __( 'Profile URL of the member.', 'buddypress' ),
